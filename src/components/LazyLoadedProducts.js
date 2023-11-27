@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import Col from "react-bootstrap/Col";
+import ProductCard from "./ProductCard";
 
 const LazyLoadedProducts = ({ fetchData }) => {
   const [products, setProducts] = useState([]);
@@ -12,7 +13,7 @@ const LazyLoadedProducts = ({ fetchData }) => {
         setProducts(productsData);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
         setLoading(false);
       }
     };
@@ -21,21 +22,24 @@ const LazyLoadedProducts = ({ fetchData }) => {
   }, [fetchData]);
 
   return (
-    <div>
-      <h2>Lazy Loaded Products</h2>
-      {loading ? (
-        <p>Loading products...</p>
-      ) : (
-        <ul>
+    <>
+      {!loading && (
+        <>
           {products.map((product) => (
-            <li key={product.id}>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-            </li>
+            <Col
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              key={product.id}
+              className="text-center"
+            >
+              <ProductCard product={product} />
+            </Col>
           ))}
-        </ul>
+        </>
       )}
-    </div>
+    </>
   );
 };
 

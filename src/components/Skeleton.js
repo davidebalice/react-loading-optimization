@@ -1,9 +1,8 @@
 import React, { Suspense, useState, useEffect } from "react";
 import axios from "axios";
-import Loading from "../components/Loading";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-
+import SkeletonContainer from "./SkeletonContainer";
 const LazyLoadedProducts = React.lazy(() => import("./LazyLoadedProducts"));
 
 const Products = () => {
@@ -12,7 +11,7 @@ const Products = () => {
   const [error, setError] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const productsPerPage = 12;
-  const seconds = 2000;
+  const seconds = 3000;
   const cycle = 4;
 
   useEffect(() => {
@@ -66,9 +65,10 @@ const Products = () => {
 
   return (
     <div>
+
       <div className="divFixed">Product loaded: {products.length} / 48</div>
       {loading ? (
-        <Loading />
+        <SkeletonContainer cards={8} />
       ) : error ? (
         <p>{error.message}</p>
       ) : (
@@ -77,7 +77,10 @@ const Products = () => {
             {[...Array(cycle)].map((_, index) =>
               index + 1 <= currentIndex ? (
                 <>
-                  <Suspense key={index + 1} fallback={<Loading />}>
+                  <Suspense
+                    key={index + 1}
+                    fallback={<></>}
+                  >
                     <LazyLoadedProducts
                       fetchData={() => fetchProducts(index + 1)}
                     />

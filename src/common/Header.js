@@ -10,7 +10,9 @@ const Header = () => {
         <div className="container-fluid">
           <div className={classes.logoContainer}>
             <img src={logo} alt="db logo" className={classes.logo} />
-            <img src={github} alt="db github" className={classes.github} />
+            <a href="https://github.com/davidebalice/react-loading-optimization" target="_blank" rel="noreferrer">
+              <img src={github} alt="db github" className={classes.github} />
+            </a>
           </div>
         </div>
       </header>
