@@ -1,0 +1,68 @@
+:root {
+  --color-bg-primary: #eb5b52;
+  --color-bg-secondary: #ddd;
+  --color-bg-light: #f1f1f1;
+  --color-text-dark: #333;
+  --color-text-light: #ffffff;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.homeSliderFadeInUp1 {
+  animation-fill-mode: both;
+  animation-duration: .8s;
+  animation-delay: .4s;
+  animation-name: fadeInUp;
+  /*
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  */
+}
+
+.homeSliderFadeInUp2 {
+  animation-fill-mode: both;
+  animation-duration: .8s;
+  animation-delay: .6s;
+  animation-name: fadeInUp;
+}
+
+.homeSliderFadeInLeft1 {
+  animation-fill-mode: both;
+  animation-duration: .8s;
+  animation-delay: .4s;
+  animation-name: fadeInLeft;
+}
+
+.homeSliderFadeInLeft2 {
+  animation-fill-mode: both;
+  animation-duration: .8s;
+  animation-delay: .6s;
+  animation-name: fadeInLeft;
+}
+
+.bgPrimary{
+  background-color:var(--color-bg-primary) !important;
+  color: var(--color-text-light) !important;
+}
+
+.logoMain{
+  width:64%
+}
+

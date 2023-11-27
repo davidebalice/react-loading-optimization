@@ -1,0 +1,63 @@
+.cardTitle {
+  min-height: 50px !important;
+}
+.cardText {
+  min-height: 90px !important;
+  font-size: 15px !important;
+}
+.cardButton {
+  text-transform: lowercase;
+  background: #3992c2 !important;
+  transition: background 0.4s;
+  border: none !important;
+  transition: all 0.3s ease; 
+}
+.cardButton:hover {
+  background: #57a3cc;
+}
+
+.cardButton:hover {
+  background-color: #397da1 !important;
+}
+
+.cardButton:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.cardButtonAdded{
+  background-color: #16c416 !important;
+}
+
+.cardButtonAdded:hover{
+  background-color: #16c416 !important;
+}
+
+.cardButtonAdded:active {
+  transform: none;
+  box-shadow: 0;
+}
+
+.cardPrice {
+  min-height: 40px !important;
+  font-size: 19px !important;
+  font-weight: 700;
+}
+.price {
+  font-size: 19px;
+}
+.decimal-part {
+  font-size: 13px;
+}
+.img {
+  border: 1px solid #f1f1f1;
+}
+.card {
+  transition: transform 0.1s ease-in-out;
+  margin-bottom:20px;
+}
+@media (max-width: 768px) {
+  .card {
+   margin-bottom: 12px;
+  }
+}
