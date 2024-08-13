@@ -14,56 +14,63 @@ const InfinityScroll = () => {
   const [hasMore, setHasMore] = useState(true);
   const productsPerPage = 8;
   const loader = useRef(null);
-  const scrollThreshold = 300; 
+  const scrollThreshold = 300;
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!isScrolling && window.innerHeight + window.scrollY >= document.body.offsetHeight - scrollThreshold) {
+      if (
+        !isScrolling &&
+        window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - scrollThreshold
+      ) {
         setIsScrolling(true);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   useEffect(() => {
     if (!initialLoad) {
       fetchProducts();
-     setInitialLoad(true);
+      setInitialLoad(true);
     }
   }, [initialLoad]);
 
   useEffect(() => {
     if (initialLoad && page >= 2) {
-    fetchProducts();
+      fetchProducts();
     }
   }, [page]);
 
   useEffect(() => {
-      const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
         if (entries[0].isIntersecting && hasMore) {
           setPage((prevPage) => prevPage + 1);
         }
-      }, {
+      },
+      {
         root: null,
         rootMargin: "20px",
-        threshold: 1.0
-      });
-
-      if (loader.current) {
-        observer.observe(loader.current);
+        threshold: 1.0,
       }
+    );
 
-      return () => {
-        if (loader.current) {
-          observer.unobserve(loader.current);
-        }
-      };
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
+
+    return () => {
+      if (loader.current) {
+        observer.unobserve(loader.current);
+      }
+    };
   }, [hasMore]);
 
   const fetchProducts = async () => {
@@ -71,14 +78,17 @@ const InfinityScroll = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/v1/products?page=${page}&limit=${productsPerPage}`
+        `${process.env.REACT_APP_API_BASE_URL}/api/v1/products?page=${page}&limit=${productsPerPage}`
       );
 
       const newProducts = response.data.product;
 
-      const uniqueNewProducts = newProducts.filter((newProduct) => (
-        !products.some((existingProduct) => existingProduct.id === newProduct.id)
-      ));
+      const uniqueNewProducts = newProducts.filter(
+        (newProduct) =>
+          !products.some(
+            (existingProduct) => existingProduct.id === newProduct.id
+          )
+      );
 
       if (uniqueNewProducts.length > 0) {
         setProducts((prevProducts) => [...prevProducts, ...newProducts]);
@@ -95,28 +105,37 @@ const InfinityScroll = () => {
 
   return (
     <div>
-      <div className="divFixed">
-        Product loaded: {products.length} / 52
-      </div>
+      <div className="divFixed">Product loaded: {products.length} / 52</div>
       <Container className="mb-5">
         <Row>
-          {products && products.map((product, index) => (
-            <Col xs={12} sm={6} md={4} lg={3} key={index} className="text-center">
-              <ProductCard product={product}/>
-            </Col>
-          ))}
-      </Row>
+          {products &&
+            products.map((product, index) => (
+              <Col
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                key={index}
+                className="text-center"
+              >
+                <ProductCard product={product} />
+              </Col>
+            ))}
+        </Row>
       </Container>
-      {loading && <><Loading/></>}
+      {loading && (
+        <>
+          <Loading />
+        </>
+      )}
       {hasMore && (
         <div ref={loader} style={{ marginTop: "20px", textAlign: "center" }}>
-          {loading ? <p>Loading...</p> : null}         
+          {loading ? <p>Loading...</p> : null}
         </div>
-      )} 
+      )}
       {!hasMore && <p className="message">All products are loaded</p>}
     </div>
   );
 };
 
 export default InfinityScroll;
-

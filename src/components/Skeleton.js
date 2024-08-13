@@ -40,7 +40,7 @@ const Products = () => {
   const fetchProducts = async (pageNum) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/v1/products?page=${pageNum}&limit=${productsPerPage}`
+        `${process.env.REACT_APP_API_BASE_URL}/api/v1/products?page=${pageNum}&limit=${productsPerPage}`
       );
 
       const newProducts = response.data.product;
