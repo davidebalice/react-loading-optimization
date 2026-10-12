@@ -1,56 +1,22 @@
 {
-  "name": "loading-optimization",
+  "name": "react-loading-optimization",
   "version": "1.0.0",
   "private": true,
-  "homepage": ".",
-  "dependencies": {
-    "@testing-library/jest-dom": "^6.6.2",
-    "@testing-library/react": "^16.0.1",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/styled-components": "^5.1.34",
-    "axios": "^1.7.7",
-    "body-parser": "^1.20.3",
-    "bootstrap": "^5.3.3",
-    "framer-motion": "^11.11.10",
-    "gh-pages": "^6.2.0",
-    "http-proxy-middleware": "^2.0.7",
-    "path-to-regexp": "^8.2.0",
-    "react": "^18.3.1",
-    "react-bootstrap": "^2.10.5",
-    "react-dom": "^18.3.1",
-    "react-icons": "^5.3.0",
-    "react-infinite-scroll-component": "^6.1.0",
-    "react-loading-skeleton": "^3.5.0",
-    "react-router-dom": "^6.27.0",
-    "react-scripts": "^5.0.1",
-    "rollup": "^4.24.2",
-    "styled-components": "^6.1.13",
-    "web-vitals": "^4.2.4"
-  },
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build",
-    "build:gh-pages": "PUBLIC_URL=/infinite-scrolling/ react-scripts build"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "axios": "^1.20.0",
+    "bootstrap": "^5.3.8",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^18.3.1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.4"
   }
 }
